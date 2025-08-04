@@ -2,11 +2,77 @@
   "nav": {
     "home": "Home",
     "about": "About",
+    "article": "Article",
+    "dashboard": "Dashboard",
     "services": "Services",
-    "contact": "Contact"
+    "contact": "Contact",
+    "profile": "Profile"
   },
   "common": {
     "theme": "Theme",
-    "language": "Language"
+    "language": "Language",
+    "siteTitle": "My Share Hub",
+    "heroTitle": "Welcome to the Knowledge Hub",
+    "heroSubtitle": "Share knowledge, articles, files, comments, and chat in one place",
+    "features": "Key Features",
+    "knowledge": "Knowledge Sharing",
+    "knowledgeDesc": "Post and manage brief knowledge entries",
+    "articles": "Articles",
+    "articlesDesc": "Write longer posts and engage in discussions",
+    "files": "File Upload",
+    "filesDesc": "Upload and download learning materials",
+    "comments": "Comments",
+    "commentsDesc": "Interact and give feedback",
+    "chat": "Chat Room",
+    "chatDesc": "Real-time group conversation",
+    "learnMore": "Learn More",
+    "switchLight": "Switch to Light Mode",
+    "switchDark": "Switch to Dark Mode",
+    "currentLocale": "Current language"
+  },
+  "article": {
+    "articlesTitle": "Articles",
+    "searchPlaceholder": "Search articles...",
+    "publish": "Publish",
+    "upload": "Upload file",
+    "noData": "No articles found",
+    "articlesCount": "articles"
+  },
+  "article-info": {
+    "articlesTitle": "Articles",
+    "comments": "Comments",
+    "commentPlaceholder": "Write a comment...",
+    "submitComment": "Submit Comment",
+    "commentEmpty": "Comment cannot be empty",
+    "backToArticles": "Back to Articles",
+    "noData": "No articles found",
+    "articlesCount": "articles"
+  },
+  "contact": {
+    "contactTitle": "Contact Us",
+    "contactDescription": "We'd love to hear from you! Please reach out with any questions or comments.",
+    "contactPhone": "Phone",
+    "contactEmail": "Email",
+    "contactWebsite": "Website",
+    "contactFormTitle": "Send us a message",
+    "name": "Name",
+    "nameRequired": "Please enter your name",
+    "namePlaceholder": "Your Name",
+    "email": "Email",
+    "emailRequired": "Please enter a valid email address",
+    "emailPlaceholder": "Your Email",
+    "message": "Message",
+    "messageRequired": "Please enter a message",
+    "messagePlaceholder": "Your Message",
+    "sendMessage": "Send Message",
+    "ourLocation": "Our Location",
+    "ourLocationDescription": "Find us at this location"
+  },
+  "profile": {
+    "editProfile": "Edit Profile",
+    "articlesCount": "Articles",
+    "commentsCount": "Comments",
+    "likesCount": "Likes",
+    "yourRecsTitle": "Recommended for you"
   }
 }

@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function GET(request: NextRequest) {
-  console.log(request)
+  console.log(request.url)
   const { pathname } = request.nextUrl;
   if (pathname.startsWith('/_next')) return;
   const locale = request.cookies.get('NEXT_LOCALE')?.value

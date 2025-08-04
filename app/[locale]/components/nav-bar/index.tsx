@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
-import { Drawer, Button, Menu, Switch, Space, message } from 'antd';
+import { Drawer, Button, Menu, Switch, Space } from 'antd';
 import { useTheme } from 'next-themes';
 import { useTranslation } from '../../../../hooks/useTranslation';
 import { faBars, faMoon, faPaw, faSun } from '@fortawesome/free-solid-svg-icons';
@@ -18,14 +18,14 @@ export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const t = useTranslation();
+  const { t } = useTranslation();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const menuLinks = [
     { key: 'home', href: '/' },
-    { key: 'about', href: '/about' },
-    { key: 'services', href: '/services' },
-    { key: 'contact', href: '/contact' },
+    { key: 'article', href: '/en/article' },
+    { key: 'profile', href: '/en/profile' },
+    { key: 'contact', href: '/en/contact' },
   ];
 
   const toggleTheme = (checked: boolean) => {
@@ -40,7 +40,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white dark:bg-gray-800 shadow sticky top-0 z-20">
+    <nav className="shadow sticky top-0 z-20 bg-white dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0 font-bold text-xl">
@@ -49,14 +49,14 @@ export default function Navbar() {
 
           <div className="hidden lg:flex space-x-8">
             {menuLinks.map((item) => (
-              <Link className="text-gray-700 dark:text-gray-200 hover:text-blue-500" key={item.key} href={item.href}>
+              <Link className="hover:text-blue-500" key={item.key} href={item.href}>
                 {t(`nav.${item.key}`)}
               </Link>
             ))}
           </div>
 
           <div className='hidden lg:flex items-center gap-2.5'>
-            <span className="text-gray-600 dark:text-gray-300" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+            <span onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
               {
                 theme === 'dark' ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />
               }
@@ -65,7 +65,6 @@ export default function Navbar() {
               size="small"
               type="link"
               onClick={() => switchLocale()}
-              className="text-gray-600 dark:text-gray-300"
             >
               {locale === 'en' ? '中文' : 'EN'}
             </Button>

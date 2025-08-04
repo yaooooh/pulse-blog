@@ -12,8 +12,8 @@ export default function ThemeWrapper({ children }: { children: React.ReactNode }
 }
 
 function Inner({ antChildren }: { antChildren: React.ReactNode }) {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const algorithm =
-    theme === 'dark' ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm;
+    resolvedTheme === 'dark' ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm;
   return <ConfigProvider theme={{ algorithm }}>{antChildren}</ConfigProvider>;
 }

@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import localeReducer from './locale.slice';
 import themeReducer from './theme.slice';
+import profileSlice from './profile.slice';
 
 export function makeStore(preloadedLocale?: string) {
   return configureStore({
-    reducer: { locale: localeReducer, theme: themeReducer },
+    reducer: { locale: localeReducer, theme: themeReducer, profile: profileSlice },
     preloadedState: preloadedLocale
       ? {
           locale: {
@@ -12,6 +13,9 @@ export function makeStore(preloadedLocale?: string) {
           },
           theme: {
             theme: preloadedLocale
+          },
+          user: {
+            profile: preloadedLocale
           }
         }
       : undefined,

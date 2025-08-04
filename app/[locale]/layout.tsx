@@ -5,6 +5,8 @@ import "./globals.css";
 import ThemeWrapper from "../../components/theme";
 import StoreProvider from '../../store/provide'
 import '@ant-design/v5-patch-for-react-19';
+import NavBar from "./components/nav-bar";
+import Footer from "./components/footer";
 
 export const metadata: Metadata = {
   title: "Pulse Blog",
@@ -22,13 +24,15 @@ export default async function RootLayout({
 
   return (
     <html lang="zh" suppressHydrationWarning>
-      <body className={classNames("h-full bg-white dark:bg-gray-900", locale === 'en' ? 'ltr' : 'ltr')} >
+      <body className={classNames("antialiased h-full", locale === 'en' ? 'ltr' : 'ltr')} >
         <StoreProvider initialLocale={locale}>
-          <ThemeWrapper>
-            <AntdRegistry>
+          <AntdRegistry>
+            <ThemeWrapper>
+              <NavBar />
               {children}
-            </AntdRegistry>
-          </ThemeWrapper>
+              <Footer />
+            </ThemeWrapper>
+          </AntdRegistry>
         </StoreProvider>
       </body>
     </html>

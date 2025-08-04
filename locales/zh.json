@@ -1,12 +1,77 @@
 {
   "nav": {
     "home": "首页",
-    "about": "关于我们",
     "services": "服务",
-    "contact": "联系我们"
+    "article": "文章",
+    "dashboard": "聊天",
+    "contact": "联系我们",
+    "profile": "我的"
   },
   "common": {
     "theme": "主题切换",
-    "language": "语言切换"
+    "language": "语言切换",
+    "siteTitle": "我的分享站",
+    "heroTitle": "欢迎来到知识分享平台",
+    "heroSubtitle": "在这里你可以分享知识、文章、上传文件、发表评论、聊天交流",
+    "features": "主要功能",
+    "knowledge": "知识分享",
+    "knowledgeDesc": "发布与管理你的知识卡片",
+    "articles": "文章分享",
+    "articlesDesc": "发表文章，与他人深入交流",
+    "files": "文件分享",
+    "filesDesc": "上传、下载各类学习资料",
+    "comments": "评论",
+    "commentsDesc": "对内容进行评论与互动",
+    "chat": "聊天室",
+    "chatDesc": "实时交流、互相讨论",
+    "learnMore": "了解详情",
+    "switchLight": "切换到白天模式",
+    "switchDark": "切换到夜间模式",
+    "currentLocale": "当前语言"
+  },
+  "article": {
+    "articlesTitle": "文章列表",
+    "searchPlaceholder": "搜索文章...",
+    "publish": "发布文章",
+    "upload": "上传文件",
+    "noData": "未找到相关文章",
+    "articlesCount": "篇文章"
+  },
+  "article-info": {
+    "articlesTitle": "文章列表",
+    "comments": "评论",
+    "commentPlaceholder": "请输入评论...",
+    "submitComment": "提交评论",
+    "commentEmpty": "评论内容不能为空",
+    "backToArticles": "返回文章列表",
+    "noData": "未找到相关文章",
+    "articlesCount": "篇文章"
+  },
+  "contact": {
+    "contactTitle": "联系我们",
+    "contactDescription": "我们非常愿意听取您的反馈！如有任何问题或意见，请随时联系我们。",
+    "contactPhone": "电话",
+    "contactEmail": "邮箱",
+    "contactWebsite": "官网",
+    "contactFormTitle": "给我们留言",
+    "name": "姓名",
+    "nameRequired": "请输入您的姓名",
+    "namePlaceholder": "您的姓名",
+    "email": "邮箱",
+    "emailRequired": "请输入有效的邮箱地址",
+    "emailPlaceholder": "您的邮箱",
+    "message": "留言",
+    "messageRequired": "请输入您的留言",
+    "messagePlaceholder": "您的留言",
+    "sendMessage": "发送留言",
+    "ourLocation": "我们的地址",
+    "ourLocationDescription": "您可以在此找到我们的公司位置"
+  },
+  "profile": {
+    "editProfile": "编辑资料",
+    "articlesCount": "文章",
+    "commentsCount": "评论",
+    "likesCount": "点赞",
+    "yourRecsTitle": "为你推荐的文章"
   }
 }
