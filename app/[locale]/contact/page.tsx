@@ -23,7 +23,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className={`px-6 py-8 transition-colors duration-300 ${resolvedTheme === 'dark' ? 'bg-black text-gray-100' : 'bg-white text-gray-900'}`}>
+    <div className={`px-6 py-8 transition-colors duration-300 dark:bg-black dark:text-gray-100 bg-white text-gray-900`}>
       <div className="max-w-4xl mx-auto">
         {/* 联系方式部分 */}
         <div className="mb-8">

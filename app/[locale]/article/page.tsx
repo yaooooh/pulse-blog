@@ -30,10 +30,7 @@ export default function ArticleListPage() {
 
   return (
     <div
-      className={`h-210 px-6 py-8 transition-colors duration-300 ${resolvedTheme === 'dark'
-        ? 'bg-black text-gray-100'
-        : 'bg-white text-gray-900'
-        }`}
+      className={'h-210 px-6 py-8 transition-colors duration-300 dark:bg-black dark:text-gray-100 bg-white text-gray-900'}
     >
       <h1 className="text-3xl font-bold mb-6 text-center">
         {t('articlesTitle')}

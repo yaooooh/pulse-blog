@@ -1,5 +1,5 @@
 'use client';
-import { useTranslation } from "../../../../hooks/useTranslation";
+import { useTranslation } from "../../../hooks/useTranslation";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation('common');

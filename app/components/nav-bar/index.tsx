@@ -5,11 +5,12 @@ import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { Drawer, Button, Menu, Switch, Space } from 'antd';
 import { useTheme } from 'next-themes';
-import { useTranslation } from '../../../../hooks/useTranslation';
+import { useTranslation } from '../../../hooks/useTranslation';
 import { faBars, faMoon, faPaw, faSun } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../../store/index';
+import { RootState } from '../../../store/index';
+import classNames from 'classnames';
 
 
 export default function Navbar() {
@@ -22,7 +23,7 @@ export default function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const menuLinks = [
-    { key: 'home', href: '/' },
+    { key: 'home', href: '/en/home' },
     { key: 'article', href: '/en/article' },
     { key: 'profile', href: '/en/profile' },
     { key: 'contact', href: '/en/contact' },
@@ -49,7 +50,7 @@ export default function Navbar() {
 
           <div className="hidden lg:flex space-x-8">
             {menuLinks.map((item) => (
-              <Link className="hover:text-blue-500" key={item.key} href={item.href}>
+              <Link className={classNames('hover:text-blue-500', { 'text-blue-600': pathname.startsWith(item.href) })} key={item.key} href={item.href}>
                 {t(`nav.${item.key}`)}
               </Link>
             ))}

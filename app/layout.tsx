@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import classNames from 'classnames';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import "./globals.css";
-import ThemeWrapper from "../../components/theme";
-import StoreProvider from '../../store/provide'
+import ThemeWrapper from "../components/theme";
+import StoreProvider from '../store/provide'
 import '@ant-design/v5-patch-for-react-19';
 import NavBar from "./components/nav-bar";
 import Footer from "./components/footer";
@@ -24,13 +24,19 @@ export default async function RootLayout({
 
   return (
     <html lang="zh" suppressHydrationWarning>
-      <body className={classNames("antialiased h-full", locale === 'en' ? 'ltr' : 'ltr')} >
+      <body className={classNames("antialiased", locale === 'en' ? 'ltr' : 'ltr')} >
         <StoreProvider initialLocale={locale}>
           <AntdRegistry>
             <ThemeWrapper>
               <NavBar />
-              {children}
-              <Footer />
+              <div className="min-h-[calc(100vh-132px)] overflow-hidden flex justify-around items-center">
+                <div className="flex-1">
+                  {children}
+                </div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0">
+                <Footer />
+              </div>
             </ThemeWrapper>
           </AntdRegistry>
         </StoreProvider>
