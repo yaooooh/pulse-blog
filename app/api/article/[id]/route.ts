@@ -1,0 +1,39 @@
+export const dynamic = 'force-static';
+import fs from 'fs';
+import path from 'path';
+import { BASE_PATH } from '../config';
+import { NextRequest } from 'next/server';
+ 
+export async function GET(request: NextRequest, { params }: { params: Promise<{id: string}>}) {
+  const id = await params.then(res => res.id);
+  const filePath = path.join(BASE_PATH, id);
+
+  if (!fs.existsSync(filePath)) {
+    return Response.json({
+      data: {
+        code: 0,
+        data: null,
+        message: 'No such file',
+      }
+    })
+  }
+
+  const content = fs.readFileSync(filePath);
+  const stats = fs.statSync(filePath);
+
+  return Response.json({ data: {
+    code: 0,
+    data: {
+      id: id,
+      title: id.slice(0, id.lastIndexOf('.')),
+      author: 'DH',
+      filename: id,
+      tags: ['vue', 'react'],
+      content: String(content),
+      createTime: stats.ctime,
+      updateTime: stats.mtime,
+      size: stats.size,
+    },
+      message: '',
+  }})
+}

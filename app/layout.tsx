@@ -35,7 +35,7 @@ export default async function RootLayout({
                   <Transition children={children} />
                 </div>
               </div>
-              <div className="absolute bottom-0 left-0 right-0">
+              <div>
                 <Footer />
               </div>
             </ThemeWrapper>

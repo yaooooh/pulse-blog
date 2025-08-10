@@ -16,6 +16,14 @@ const config = withAntdLess({
   webpack(config) {
     return config;
   },
+  turbopack: {
+    rules: {
+    '*.{md}': {
+        loaders: ['raw-loader'],
+        as: '*.js',
+      },
+    },
+  },
 });
 
 module.exports = config;

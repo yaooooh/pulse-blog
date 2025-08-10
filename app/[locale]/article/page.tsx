@@ -1,7 +1,9 @@
 'use client';
-import { useState } from 'react';
-import { Input, Tag, Card } from 'antd';
+import { useEffect, useState } from 'react';
+import { Input, Tag, Card, Flex, Typography } from 'antd';
 import { useTranslation } from '../../../hooks/useTranslation';
+
+const { Paragraph } = Typography;
 
 const dummyArticles = [
   { id: 1, title: 'How to Use Next.js', tags: ['Next.js', 'React'], type: 'Tutorial' },
@@ -10,61 +12,61 @@ const dummyArticles = [
 ];
 
 
-import { Checkbox, Divider } from 'antd';
+import { Checkbox } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { ArticleType, getArticleList } from '../../../request/article.request';
+import Link from 'next/link';
+import { getTagList, TagType } from '../../../request/tag.request';
 
 export default function Article() {
   const { t } = useTranslation('article');
   const [search, setSearch] = useState('');
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [articleList, setArticleList] = useState<ArticleType[]>([]);
+  const [tagList, setTagList] = useState<TagType[]>([]);
 
-  const filtered = dummyArticles.filter(a =>
-    (!search || a.title.toLowerCase().includes(search.toLowerCase())) &&
-    (!selectedTag || a.tags.includes(selectedTag)) &&
-    (!selectedType || a.type === selectedType)
-  );
+  useEffect(() => {
+    getArticleList().then(res => {
+      setArticleList(res.data);
+    })
+    getTagList().then(res => {
+      setTagList(res.data);
+    })
+  }, [])
 
   const searchArticle = () => {
     console.log(search)
   }
 
-  const articles = [
-    { title: '构建你的第一个 Next.js 博客', tags: ['Next.js', 'React'] },
-    { title: 'Tailwind CSS 响应式布局指南', tags: ['Tailwind', 'CSS'] },
-    { title: 'UI 设计中的深色模式实践', tags: ['Design', 'UX'] },
-  ];
-
   return (
     <div className="bg-white dark:bg-black text-gray-900 dark:text-white">
       <div className="container mx-auto px-4 py-6">
-        <Input
-          value={search}
-          onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
-          suffix={<FontAwesomeIcon onClick={searchArticle} icon={faSearch} />} />
         <div className="flex flex-col lg:flex-row gap-4">
 
           {/* 左侧筛选栏 */}
-          <aside className="lg:w-1/5">
+          <aside className="lg:w-1/5 hidden lg:block">
             <div className="bg-white dark:bg-black p-4 rounded shadow">
               <h3 className="text-lg font-semibold mb-2">{t('title')}</h3>
-              <Divider className="my-2" />
               <Checkbox.Group className="flex flex-col gap-2">
-                <Checkbox value="react">{t('react')}</Checkbox>
-                <Checkbox value="next">{t('next')}</Checkbox>
-                <Checkbox value="tailwind">{t('tailwind')}</Checkbox>
-                <Checkbox value="design">{t('design')}</Checkbox>
+                {
+                  tagList.map(tag => <Checkbox value={tag} key={tag}>{t(tag)}</Checkbox>)
+                }
               </Checkbox.Group>
             </div>
           </aside>
 
           {/* 文章列表 */}
           <main className="lg:w-3/5 w-full">
-            <div className="space-y-4">
-              {articles.map((a, i) => (
-                <Card key={i} className="dark:bg-black dark:text-white">
-                  <h2 className="text-xl font-semibold">{a.title}</h2>
+            <Input
+              className='mb-6'
+              value={search}
+              onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
+              suffix={<FontAwesomeIcon onClick={searchArticle} icon={faSearch} />} />
+            <Flex gap={10} vertical className="space-y-4">
+              {articleList.map((a, i) => (
+                <Card key={a.id} className="dark:bg-black dark:text-white">
+                  <h2 className="text-xl font-semibold"><Link href={`article/${a.id}`}>{a.title}</Link></h2>
+                  <Paragraph ellipsis={{ rows: 3, expandable: false, symbol: 'more' }}>{a.content}</Paragraph>
                   <div className="mt-2">
                     {a.tags.map(tag => (
                       <Tag key={tag}>{tag}</Tag>
@@ -72,7 +74,7 @@ export default function Article() {
                   </div>
                 </Card>
               ))}
-            </div>
+            </Flex>
           </main>
 
           {/* 右侧推荐 */}

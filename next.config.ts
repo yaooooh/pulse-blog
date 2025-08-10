@@ -7,6 +7,14 @@ const nextConfig: NextConfig = {
     locales: ['zh', 'en'],
     defaultLocale: 'zh',
   },
+  turbopack: {
+    rules: {
+    '*.{md}': {
+        loaders: ['raw-loader'],
+        as: '*.js',
+      },
+    },
+  },
 };
 
 export default nextConfig;
