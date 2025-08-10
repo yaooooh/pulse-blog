@@ -5,7 +5,7 @@ import { Button } from "antd";
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-50 px-4 text-center dark:bg-black">
+    <div className="h-full flex flex-col items-center justify-center bg-white px-4 text-center dark:bg-black">
       <h1 className="text-8xl font-bold bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
         404
       </h1>

@@ -5,6 +5,7 @@ import { Card, List, Avatar, Button } from 'antd';
 import { Line } from '@ant-design/charts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from '../../../hooks/useTranslation';
 
 type Article = { id: string; title: string; description: string; url: string };
 type StatsPoint = { date: string; value: number };
@@ -39,6 +40,7 @@ export default function Profile({
     height: 240,
     padding: 'auto',
   };
+  const { t } = useTranslation('profile');
 
   return (
     <div className="max-w-3xl mx-auto py-10 space-y-3">
@@ -53,7 +55,7 @@ export default function Profile({
 
       {/* 推荐文章 */}
       <section id="articles">
-        <h2 className="text-2xl font-medium mb-4">推荐文章</h2>
+        <h2 className="text-2xl font-medium mb-4">{t('recommend')}</h2>
         <Card>
           <List<Article>
             grid={{ gutter: 16, column: 1, xs: 1, sm: 1, md: 2 }}
@@ -78,7 +80,7 @@ export default function Profile({
 
       {/* 活跃图表 */}
       <section id="stats">
-        <h2 className="text-2xl font-medium mb-4">活跃图表</h2>
+        <h2 className="text-2xl font-medium mb-4">{t('activeChart')}</h2>
         <Card>
           <div className="h-60">
             <Line {...chartConfig} />
@@ -89,7 +91,7 @@ export default function Profile({
       {/* 联系 CTA */}
       <section id="contact" className="text-center">
         <Button type="primary" shape="round" size="large">
-          联系我
+          {t('concat')}
         </Button>
       </section>
     </div>

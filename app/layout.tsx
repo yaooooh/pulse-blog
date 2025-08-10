@@ -7,6 +7,7 @@ import StoreProvider from '../store/provide'
 import '@ant-design/v5-patch-for-react-19';
 import NavBar from "./components/nav-bar";
 import Footer from "./components/footer";
+import Transition from "./components/transition";
 
 export const metadata: Metadata = {
   title: "Pulse Blog",
@@ -29,9 +30,9 @@ export default async function RootLayout({
           <AntdRegistry>
             <ThemeWrapper>
               <NavBar />
-              <div className="min-h-[calc(100vh-132px)] overflow-hidden flex justify-around items-center">
-                <div className="flex-1">
-                  {children}
+              <div className="min-h-[calc(100vh-132px)] overflow-hidden flex vertical justify-around items-stretch">
+                <div className="flex-1 relative">
+                  <Transition children={children} />
                 </div>
               </div>
               <div className="absolute bottom-0 left-0 right-0">

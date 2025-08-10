@@ -6,7 +6,7 @@
     "dashboard": "Dashboard",
     "services": "Services",
     "contact": "Contact",
-    "profile": "Profile"
+    "monitor": "Monitor"
   },
   "common": {
     "theme": "Theme",
@@ -36,7 +36,15 @@
     "publish": "Publish",
     "upload": "Upload file",
     "noData": "No articles found",
-    "articlesCount": "articles"
+    "articlesCount": "articles",
+    "search": "Search articles...",
+    "filter_tags": "Filter by Tags",
+    "filter_types": "Filter by Type",
+    "title": "Filters",
+    "react": "React",
+    "next": "Next.js",
+    "tailwind": "Tailwind",
+    "design": "Design"
   },
   "article-info": {
     "articlesTitle": "Articles",
@@ -73,6 +81,9 @@
     "articlesCount": "Articles",
     "commentsCount": "Comments",
     "likesCount": "Likes",
-    "yourRecsTitle": "Recommended for you"
+    "yourRecsTitle": "Recommended for you",
+    "recommend": "Recommend Article",
+    "activeChart": "Active Chart",
+    "concat": "Concat"
   }
 }

@@ -21,11 +21,11 @@ export const profileSlice = createSlice({
   name: 'profile',
   initialState,
   reducers: {
-    setLocale(state, action: PayloadAction<User>) {
+    setProfile(state, action: PayloadAction<User>) {
       state.profile = action.payload.profile;
     }
   }
 });
 
-export const { setLocale } = profileSlice.actions;
+export const { setProfile } = profileSlice.actions;
 export default profileSlice.reducer;

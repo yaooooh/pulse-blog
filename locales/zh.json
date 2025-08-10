@@ -5,7 +5,7 @@
     "article": "文章",
     "dashboard": "聊天",
     "contact": "联系我们",
-    "profile": "我的"
+    "monitor": "监控"
   },
   "common": {
     "theme": "主题切换",
@@ -35,7 +35,15 @@
     "publish": "发布文章",
     "upload": "上传文件",
     "noData": "未找到相关文章",
-    "articlesCount": "篇文章"
+    "articlesCount": "篇文章",
+    "search": "搜索文章...",
+    "filter_tags": "按标签筛选",
+    "filter_types": "按类型筛选",
+    "title": "筛选条件",
+    "react": "React",
+    "next": "Next.js",
+    "tailwind": "Tailwind",
+    "design": "设计"
   },
   "article-info": {
     "articlesTitle": "文章列表",
@@ -72,6 +80,9 @@
     "articlesCount": "文章",
     "commentsCount": "评论",
     "likesCount": "点赞",
-    "yourRecsTitle": "为你推荐的文章"
+    "yourRecsTitle": "为你推荐的文章",
+    "recommend": "推荐文章",
+    "activeChart": "活跃图表",
+    "concat": "联系我"
   }
 }
