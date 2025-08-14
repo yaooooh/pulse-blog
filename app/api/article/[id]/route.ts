@@ -17,23 +17,32 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{i
       }
     })
   }
+  try {
+    const content = fs.readFileSync(filePath);
+    const stats = fs.statSync(filePath);
 
-  const content = fs.readFileSync(filePath);
-  const stats = fs.statSync(filePath);
-
-  return Response.json({ data: {
-    code: 0,
-    data: {
-      id: id,
-      title: id.slice(0, id.lastIndexOf('.')),
-      author: 'DH',
-      filename: id,
-      tags: ['vue', 'react'],
-      content: String(content),
-      createTime: stats.ctime,
-      updateTime: stats.mtime,
-      size: stats.size,
-    },
-      message: '',
-  }})
+    return Response.json({
+      code: 0,
+      data: {
+        id: id,
+        title: id.slice(0, id.lastIndexOf('.')),
+        author: 'DH',
+        filename: id,
+        tags: ['vue', 'react'],
+        content: String(content),
+        createTime: stats.ctime,
+        updateTime: stats.mtime,
+        size: stats.size,
+      },
+        message: 'Get article content successfully!',
+    })
+  } catch(error) {
+    return Response.json({
+      data: {
+        code: 0,
+        data: null,
+        message: 'Get article content error!',
+      }
+    })
+  }
 }

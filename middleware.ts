@@ -1,27 +1,28 @@
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { useSelector } from 'react-redux';
 
 const locales = ['en', 'zh'];
 const defaultLocale = 'en';
 
 export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  console.log('pathname', pathname)
-  const hasLocale = locales.some((loc) =>
-    pathname.startsWith(`/${loc}/`) || pathname === `/${loc}`
+  const { pathname, searchParams, origin } = request.nextUrl;
+  const hasLocale = locales.some(
+    (loc) => pathname.startsWith(`/${loc}/`) || pathname === `/${loc}`
   );
   if (hasLocale) return NextResponse.next();
 
-  // 获取用户语言偏好（header 或 cookie）
-  const cookie = await cookies();
-  const locale = cookie.get('NEXT_LOCALE')?.value || defaultLocale;
-  console.log(locale, cookie.getAll())
-  const url = request.nextUrl.clone();
-  url.pathname = `/${locale}${pathname}`;
-  return NextResponse.redirect(url);
+  const cookieLocale = (await cookies()).get('NEXT_LOCALE')?.value || defaultLocale;
+  const newUrl = new URL(`/${cookieLocale}${pathname}`, origin);
+
+  // 将原始查询参数全部复制到新 URL
+  request.nextUrl.searchParams.forEach((value, key) => {
+    newUrl.searchParams.set(key, value);
+  });
+
+  return NextResponse.redirect(newUrl);
 }
+
 
 export const config = {
   matcher: '/((?!_next|api|.*\\..*).*)',

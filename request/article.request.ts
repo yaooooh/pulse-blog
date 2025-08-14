@@ -1,9 +1,11 @@
-import { Response } from "./type";
+import { AxiosResponse } from "axios";
+import Request from "./request";
 
 export interface ArticleType {
   id: string;
   title: string;
   author: string;
+  description: string;
   content: string;
   tags: string[];
   createTime: Date;
@@ -11,11 +13,12 @@ export interface ArticleType {
   size: number;
 }
 
+const request = new Request();
 
-export function getArticleList(): Promise<Response<ArticleType[]>> {
-  return fetch('/api/article/list').then(res => res.json()).then(({data}: {data: Response<ArticleType[]>}) => data);
+export function getArticleList(params?: Omit<Partial<ArticleType>, 'tags' | 'createTime' | 'updateTime' | 'size'>): Promise<AxiosResponse<ArticleType[]>> {
+  return request.get<ArticleType[]>('/api/article/list', params);
 }
 
-export function getArticleById(id: string): Promise<Response<ArticleType>> {
-  return fetch(`/api/article/${id}`).then(res => res.json()).then(({data}: {data: Response<ArticleType>}) => data);
+export function getArticleById(id: string): Promise<AxiosResponse<ArticleType>> {
+  return request.get<ArticleType>(`/api/article/${id}`);
 }

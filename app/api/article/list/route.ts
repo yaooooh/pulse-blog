@@ -1,34 +1,35 @@
 export const dynamic = 'force-static'
 import fs from 'fs'
-import { BASE_PATH } from '../config'
 import path from 'path';
+import { NextRequest } from 'next/server';
+import { BASE_PATH } from '../config'
 import { ArticleType } from '../../../../request/article.request';
- 
-export async function GET() {
+
+export async function GET(request: NextRequest) {
   const files = fs.readdirSync(BASE_PATH);
   const articleList: ArticleType[] = [];
+  const title = request.nextUrl.searchParams.get('title');
 
-  files.map(filename => {
+  files.filter(file => file.endsWith('.json')).filter(file => !title || file.includes(title)).map(filename => {
     const pathname = path.join(BASE_PATH, filename);
-    if (fs.existsSync(pathname)) {
-      const content = fs.readFileSync(pathname);
-      const stats = fs.statSync(pathname);
-      articleList.push({
-        id: filename,
-        author: 'dh',
-        title: filename.slice(0, filename.lastIndexOf('.')),
-        content: String(content),
-        tags: ['vue', 'react'],
-        createTime: stats.ctime,
-        updateTime: stats.mtime,
-        size: stats.size
+
+    try {
+      if (fs.existsSync(pathname)) {
+        const content = fs.readFileSync(pathname);
+        articleList.push(JSON.parse(String(content)));
+      }
+    } catch(error) {
+      return Response.json({
+        code: -1,
+        data: null,
+        message: 'Get file list error!'
       })
     }
   })
 
-  return Response.json({ data: {
+  return Response.json({
     code: 0,
     data: articleList,
     message: 'Get file list successfully!',
-  }})
+  })
 }

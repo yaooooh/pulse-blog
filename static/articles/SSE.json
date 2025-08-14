@@ -1,0 +1,7 @@
+{
+  "id": "SSE.md",
+  "author": "DH",
+  "title": "SSE",
+  "description": "SSE 与 WebSocket 作用相似，都是建立浏览器与服务器之间的通信渠道，然后服务器向浏览器推送信息",
+  "tags": ["SSE", "网络通信", "智能对话"]
+}

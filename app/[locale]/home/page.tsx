@@ -64,7 +64,7 @@ const featureItems = [
     icon: FileTextOutlined,
     titleKey: 'articles',
     descKey: 'articlesDesc',
-    href: '/articles'
+    href: '/article'
   },
   {
     key: 'files',

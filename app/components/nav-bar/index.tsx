@@ -18,7 +18,6 @@ import { setLocale } from '../../../store/locale.slice';
 export default function Navbar() {
   const menuLinks = useSelector((state: RootState) => state?.router?.route);
   const locale = useSelector((state: RootState) => state?.locale?.locale);
-  console.log(menuLinks)
   const dispatch = useDispatch();
   const { theme, setTheme } = useTheme();
   const router = useRouter();
@@ -33,18 +32,17 @@ export default function Navbar() {
     dispatch(setLocale(next));
     document.cookie = `NEXT_LOCALE=${next}`;
     const tail = pathname.split(`/${locale}`)[1] || '/';
-    console.log(tail, next, pathname, pathname.split(`/${locale}`))
     router.push(`/${next}${tail}`, { scroll: false });
   };
 
   useEffect(() => {
     gsap.to(toggleDotRef.current, {
-      x: !(theme === 'dark') ? -30 : 0, // 滑块移动
+      x: !(theme === 'dark') ? -23 : 0, // 滑块移动
       duration: 0.3,
       ease: 'power2.out',
     });
     gsap.to(toggleIconRef.current, {
-      x: !(theme === 'dark') ? 35 : 0,
+      x: !(theme === 'dark') ? 23 : 0,
       duration: 0.3,
       ease: 'power2.out'
     })
@@ -53,7 +51,7 @@ export default function Navbar() {
   const Toggle = (
     <div
       className={classNames(
-        'w-16 h-8 rounded-full flex items-center justify-between px-1 cursor-pointer transition-colors duration-300',
+        'w-12 h-6 rounded-full flex items-center justify-between px-1 cursor-pointer transition-colors duration-300',
         theme === 'dark' ? 'bg-gray-700' : 'bg-yellow-300'
       )}
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -61,7 +59,7 @@ export default function Navbar() {
       <FontAwesomeIcon ref={toggleIconRef} icon={theme === 'dark' ? faSun : faMoon} className={theme === 'dark' ? 'text-yellow-300' : 'text-white'} />
       <div
         ref={toggleDotRef}
-        className="w-6 h-6 bg-white rounded-full shadow-md transform"
+        className="w-4 h-4 bg-white rounded-full shadow-md transform"
       />
     </div>
   )
@@ -82,7 +80,7 @@ export default function Navbar() {
 
           <div className="hidden lg:flex space-x-8">
             {menuLinks.map((item) => (
-              <Link className={classNames('hover:text-blue-500', { 'text-blue-600': pathname.startsWith(item.href) })} key={item.key} href={item.href}>
+              <Link className={classNames('hover:text-blue-500', { 'text-blue-600': pathname.endsWith(item.href) })} key={item.key} href={item.href}>
                 {t(`nav.${item.key}`)}
               </Link>
             ))}

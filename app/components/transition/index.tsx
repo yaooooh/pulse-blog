@@ -13,12 +13,13 @@ export default function Transition({ children }: { children: React.ReactNode }) 
   const routes = useSelector((state: RootState) => state?.router?.route);
   const [displayChildren] = useState(children);
   const [prePath, setPrePath] = useState<string>(pathname);
+  const [breadcrumb, setBreadcrumb] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
-  console.log(pathname)
 
   useEffect(() => {
     let preIndex = 0, currIndex = 0;
-
+    setBreadcrumb(pathname.replace('/en', '/Home').split('/').slice(1));
+    console.log(breadcrumb)
     routes.forEach((route, index) => {
       if (route.href.startsWith(prePath)) {
         preIndex = index;
@@ -34,14 +35,12 @@ export default function Transition({ children }: { children: React.ReactNode }) 
   }, [pathname]);
   return <div className='h-full' ref={containerRef}>
     {
-      !pathname.endsWith('home') && <div className='ms-5'>
+      !pathname.endsWith('home') && <div className='ms-5 mt-5'>
         <Breadcrumb
           items={
-            pathname.replace('/en', '/Home')
-              .split('/').slice(1, -1)
-              .map(item => ({
-                title: <Link href={`/${item.toLowerCase()}`}>{item.toLocaleUpperCase()}</Link>
-              }))}
+            breadcrumb.map((item, index) => ({
+              title: index === breadcrumb.length - 1 ? item.toLocaleUpperCase() : <Link href={`/${item.toLowerCase()}`}>{item.toLocaleUpperCase()}</Link>
+            }))}
         />
       </div>
     }

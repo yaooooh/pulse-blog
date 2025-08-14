@@ -1,8 +1,17 @@
 [
-  "vue",
+  "VUE",
   "React",
   "JS",
   "TypeScript",
   "CSS",
-  "C"
+  "C",
+  "MIXIN",
+  "SSE",
+  "网络通信",
+  "智能对话",
+  "浏览器",
+  "并发",
+  "CORS",
+  "反向代理",
+  "JSONP"
 ]

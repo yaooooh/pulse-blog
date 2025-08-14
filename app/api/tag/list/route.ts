@@ -3,9 +3,9 @@ import tags from '../../../../static/tags/index.json'
  
 export async function GET() {
 
-  return Response.json({ data: {
+  return Response.json({
     code: 0,
     data: tags,
     message: 'Get file list successfully!',
-  }})
+  })
 }
