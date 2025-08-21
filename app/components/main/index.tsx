@@ -2,7 +2,7 @@
 
 import ThemeWrapper from "../../../components/theme";
 
-export default ({ children }: { children: React.ReactNode }) => {
+const Main = ({ children }: { children: React.ReactNode }) => {
   return (
     <ThemeWrapper>
       <div className="min-h-[calc(100vh-132px)] overflow-hidden flex justify-around items-center">
@@ -13,3 +13,5 @@ export default ({ children }: { children: React.ReactNode }) => {
     </ThemeWrapper>
   )
 }
+
+export default Main;

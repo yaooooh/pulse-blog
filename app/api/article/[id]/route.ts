@@ -36,7 +36,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{i
       },
         message: 'Get article content successfully!',
     })
-  } catch(error) {
+  } catch(error: unknown) {
     return Response.json({
       data: {
         code: 0,
@@ -46,3 +46,9 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{i
     })
   }
 }
+
+
+// import { put } from "@vercel/blob";
+// export async function POST(request: NextRequest, { params }: {params: Promise<{id: string}>}) {
+//   const { url } = await put('articles/blob.txt', 'Hello World!', { access: 'public' });
+// }

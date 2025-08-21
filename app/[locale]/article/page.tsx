@@ -78,7 +78,7 @@ export default function Article() {
               onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
               suffix={<FontAwesomeIcon onClick={searchArticle} icon={faSearch} className='cursor-pointer' />} />
             <Flex gap={10} vertical className="space-y-4">
-              {articleList.map((a, i) => (
+              {articleList.map(a => (
                 <Card key={a.id} className="dark:bg-black dark:text-white">
                   <h2 className="text-xl font-semibold"><Link href={`article/${a.id}`}>{a.title}</Link></h2>
                   <Paragraph ellipsis={{ rows: 3, expandable: false, symbol: 'more' }}>{a.description}</Paragraph>
@@ -98,15 +98,12 @@ export default function Article() {
               <h3 className="text-lg font-semibold mb-2">🔥 推荐内容</h3>
               <ul className="space-y-2">
                 {
-                  articleList.slice(0, 3).map(article => (
+                  articleList.slice(0, 6).map(article => (
                     <>
                       <li><a href={`article/${article.id}`} className='text-blue-600 dark:text-blue-400'>{article.title}</a></li>
                     </>
                   ))
                 }
-                <li><a href="#" className="text-blue-600 dark:text-blue-400">构建一个个人博客</a></li>
-                <li><a href="#" className="text-blue-600 dark:text-blue-400">使用 Ant Design 的最佳实践</a></li>
-                <li><a href="#" className="text-blue-600 dark:text-blue-400">前端面试常见问题</a></li>
               </ul>
             </div>
           </aside>

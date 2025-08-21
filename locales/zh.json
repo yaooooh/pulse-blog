@@ -5,7 +5,8 @@
     "article": "文章",
     "dashboard": "聊天",
     "contact": "联系我们",
-    "monitor": "监控"
+    "monitor": "监控",
+    "publish": "发布文章"
   },
   "common": {
     "theme": "主题切换",
@@ -84,5 +85,13 @@
     "recommend": "推荐文章",
     "activeChart": "活跃图表",
     "concat": "联系我"
+  },
+  "publish": {
+    "submitArticle": "发布文章",
+    "title": "文章标题",
+    "description": "文章描述",
+    "tags": "文章标签",
+    "content": "文章内容（Markdown）",
+    "pleaseInput": "请输入{message}"
   }
 }

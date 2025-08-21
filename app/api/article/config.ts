@@ -1,1 +1,1 @@
-export const BASE_PATH = 'static/articles/'
+export const BASE_PATH = 'public/static/articles/'

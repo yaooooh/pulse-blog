@@ -1,1 +1,1 @@
-export const BASE_PATH = 'static/tags/'
+export const BASE_PATH = 'public/static/tags/'

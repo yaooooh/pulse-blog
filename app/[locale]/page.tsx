@@ -10,7 +10,7 @@ export default function AnimatedHero() {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    var tl = gsap.timeline({ repeat: 2, repeatDelay: 1 });
+    const tl = gsap.timeline({ repeat: 2, repeatDelay: 1 });
     tl.from(heroRef.current, { y: -80, duration: 1, opacity: 0.5, ease: 'sine.out' });
     tl.to(heroRef.current, { y: 50, duration: 1, opacity: 1, ease: 'sine.out' });
     tl.to(heroRef.current, { y: -80, duration: 1, opacity: 0.5, ease: 'sine.in' });

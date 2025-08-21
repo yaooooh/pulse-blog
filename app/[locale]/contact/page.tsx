@@ -9,12 +9,11 @@ import Link from 'next/link'
 
 export default function ContactPage() {
   const { t } = useTranslation('contact')
-  const { resolvedTheme } = useTheme()
 
   const [loading, setLoading] = useState(false)
 
   // 表单提交处理
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = async () => {
     setLoading(true)
     setTimeout(() => {
       message.success(t('contactSuccess'))

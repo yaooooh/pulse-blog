@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Empty, Tag } from 'antd';
+import { Card, Empty, Tag } from 'antd';
 import { useTheme } from 'next-themes';
 import { Marked } from 'marked';
 import Link from 'next/link';
@@ -10,17 +10,20 @@ import hljs from 'highlight.js';
 import { useTranslation } from '../../../../hooks/useTranslation';
 import { ArticleType, getArticleById } from '../../../../request/article.request';
 import { format } from '../../../../utils/date.util';
+import Request from '../../../../request/request';
 
 const marked = new Marked(
   markedHighlight({
     emptyLangClass: 'hljs',
     langPrefix: 'hljs language-',
-    highlight(code, lang, info) {
+    highlight(code, lang) {
       const language = hljs.getLanguage(lang) ? lang : 'plaintext';
       return hljs.highlight(code, { language }).value;
     }
   })
 );
+
+const request = new Request();
 
 const ArticleDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
   const { locale } = useTranslation('article-info')
@@ -34,10 +37,21 @@ const ArticleDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
   }, [theme])
 
   useEffect(() => {
-    getArticleById(id).then(res => {
-      setArticle(res.data)
+    // getArticleById(id).then(res => {
+    //   setArticle(res.data)
+    // })
+    // vercel environment can't access the code directory
+    request.get<ArticleType>(`/static/articles/${id}`).then(res => {
+      console.log(res)
+      setArticle({
+        author: 'DH',
+        id: '123',
+        content: res,
+        description: '',
+        title: ''
+      })
     })
-  }, [])
+  }, [id])
 
   if (!article) {
     return <Empty className="mt-10" />;

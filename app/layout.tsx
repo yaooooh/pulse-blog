@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from 'next/script'
 import classNames from 'classnames';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import "./globals.css";
@@ -27,7 +26,6 @@ export default async function RootLayout({
 
   return (
     <html lang="zh" suppressHydrationWarning>
-      <Script src="/sladar.js"></Script>
       <body className={classNames("antialiased", locale === 'en' ? 'ltr' : 'ltr')} >
         <StoreProvider initialLocale={locale}>
           <AntdRegistry>
@@ -35,7 +33,7 @@ export default async function RootLayout({
               <NavBar />
               <div className="min-h-[calc(100vh-132px)] overflow-hidden flex vertical justify-around items-stretch">
                 <div className="flex-1 relative">
-                  <Transition children={children} />
+                  <Transition>{children}</Transition>
                 </div>
               </div>
               <div>

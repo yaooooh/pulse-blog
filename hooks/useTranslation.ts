@@ -14,10 +14,16 @@ export function useTranslation(module?: string) {
   return {
     locale,
     setLocale: (locale: 'en' | 'zh') => dispatch(setLocale(locale)),
-    t: (key: string): string => {
+    t: <T extends { [key: string]: string}>(key: string, args?: T): string => {
       const parts = key.split('.');
       // 深层查找
-      return parts.reduce((o: any, k: string) => o?.[k], module ? dict?.[module as keyof typeof dict] : dict) ?? key;
+      let val: string = parts.reduce((o: any, k: string) => o?.[k], module ? dict?.[module as keyof typeof dict] : dict) ?? key;
+      if (args) {
+        Object.keys(args).forEach(key => {
+          val = val.replaceAll(`{${key}}`, args[key]);
+        })
+      }
+      return val;
     }
   };
 }

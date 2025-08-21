@@ -7,7 +7,7 @@ const initialState: Router = {
   route: [
     { key: 'home', href: '/home' },
     { key: 'article', href: '/article' },
-    { key: 'monitor', href: '/monitor' },
+    { key: 'publish', href: '/publish' },
     { key: 'contact', href: '/contact' },
   ]
 }

@@ -6,7 +6,8 @@
     "dashboard": "Dashboard",
     "services": "Services",
     "contact": "Contact",
-    "monitor": "Monitor"
+    "monitor": "Monitor",
+    "publish": "Publish"
   },
   "common": {
     "theme": "Theme",
@@ -85,5 +86,13 @@
     "recommend": "Recommend Article",
     "activeChart": "Active Chart",
     "concat": "Concat"
+  },
+  "publish": {
+    "submitArticle": "Submit Article",
+    "title": "Title",
+    "description": "Description",
+    "tags": "Tags",
+    "content": "Content (Markdown)",
+    "pleaseInput": "Please input {message}"
   }
 }

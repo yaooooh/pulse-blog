@@ -59,7 +59,7 @@ export default function Navbar() {
       <FontAwesomeIcon ref={toggleIconRef} icon={theme === 'dark' ? faSun : faMoon} className={theme === 'dark' ? 'text-yellow-300' : 'text-white'} />
       <div
         ref={toggleDotRef}
-        className="w-4 h-4 bg-white rounded-full shadow-md transform"
+        className="w-4 h-4 dark:bg-white bg-black rounded-full shadow-md transform"
       />
     </div>
   )

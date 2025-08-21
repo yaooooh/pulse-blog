@@ -1,39 +1,21 @@
-// components/Profile.tsx
 'use client';
 import React from 'react';
-import { Card, List, Avatar, Button } from 'antd';
+import { Card, List, Button } from 'antd';
 import { Line } from '@ant-design/charts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from '../../../hooks/useTranslation';
 
 type Article = { id: string; title: string; description: string; url: string };
-type StatsPoint = { date: string; value: number };
 
-interface Props {
-  avatarSrc: string;
-  name: string;
-  title: string;
-  bio: string;
-  articles: Article[];
-  stats: StatsPoint[];
-}
-
-export default function Profile({
-  avatarSrc,
-  name,
-  title,
-  bio,
-  articles,
-  stats = [
-    { date: '2025-07-28', value: 10 },
-    { date: '2025-07-29', value: 15 },
-    { date: '2025-07-30', value: 12 },
-    // 更多数据点
-  ],
-}: Props) {
+const Profile: React.FC = () => {
   const chartConfig = {
-    data: stats,
+    data: [
+      { date: '2025-07-28', value: 10 },
+      { date: '2025-07-29', value: 15 },
+      { date: '2025-07-30', value: 12 },
+      // 更多数据点
+    ],
     xField: 'date',
     yField: 'value',
     smooth: true,
@@ -48,9 +30,9 @@ export default function Profile({
       <section className="text-center space-y-4">
         {/* <Avatar size={120} src={avatarSrc} className="mx-auto" /> */}
         <FontAwesomeIcon icon={faPaw} size='5x' />
-        <h1 className="text-4xl font-semibold">{name}</h1>
-        <p className="text-lg text-gray-600">{title}</p>
-        <p className="mt-4 text-gray-700">{bio}</p>
+        <h1 className="text-4xl font-semibold">{'name'}</h1>
+        <p className="text-lg text-gray-600">{'title'}</p>
+        <p className="mt-4 text-gray-700">{'bio'}</p>
       </section>
 
       {/* 推荐文章 */}
@@ -59,7 +41,7 @@ export default function Profile({
         <Card>
           <List<Article>
             grid={{ gutter: 16, column: 1, xs: 1, sm: 1, md: 2 }}
-            dataSource={articles}
+            dataSource={[]}
             renderItem={(item) => (
               <List.Item>
                 <Card
@@ -97,3 +79,5 @@ export default function Profile({
     </div>
   );
 }
+
+export default Profile;

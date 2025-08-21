@@ -3,6 +3,7 @@ import localeReducer from './locale.slice';
 import themeReducer from './theme.slice';
 import profileSlice from './profile.slice';
 import routeSlice from './route.slice';
+import articleSlice from './article.slice';
 
 export function makeStore(preloadedLocale?: string) {
   return configureStore({
@@ -10,7 +11,8 @@ export function makeStore(preloadedLocale?: string) {
       locale: localeReducer,
       theme: themeReducer,
       profile: profileSlice,
-      router: routeSlice
+      router: routeSlice,
+      article: articleSlice,
     },
     preloadedState: preloadedLocale
       ? {
@@ -19,7 +21,7 @@ export function makeStore(preloadedLocale?: string) {
           },
           theme: {
             theme: preloadedLocale
-          },
+          }
           // user: {
           //   profile: preloadedLocale
           // },
