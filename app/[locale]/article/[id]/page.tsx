@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, Empty, Tag } from 'antd';
 import { useTheme } from 'next-themes';
 import { Marked } from 'marked';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { markedHighlight } from "marked-highlight";
 import hljs from 'highlight.js';
 import { useTranslation } from '../../../../hooks/useTranslation';
