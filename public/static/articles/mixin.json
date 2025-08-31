@@ -3,5 +3,7 @@
     "author": "DH",
     "title": "Mixin 使用规则",
     "description": "当 data 进行合并时，将会两者进行递归合并，当发生冲突时，将会以组件内部优先. 生命周期函数：两者都会存在，并且混入函数中的生命周期会优先执. 当 methods，components，directives 合并时，将会被合并为同一个对象，键名冲突时，将会使用组件内部的键值对",
+    "createTime": 1756657292471,
+    "updateTime": 1756657292471,
     "tags": ["vue", "mixin"]
   }

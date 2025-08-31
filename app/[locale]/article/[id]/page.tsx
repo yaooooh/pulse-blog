@@ -10,7 +10,8 @@ import hljs from 'highlight.js';
 import { useTranslation } from '../../../../hooks/useTranslation';
 import { ArticleType, getArticleById } from '../../../../request/article.request';
 import { format } from '../../../../utils/date.util';
-import Request from '../../../../request/request';
+// import Request from '../../../../request/request';
+// import useLoading from '../../../../hooks/useLoading';
 
 const marked = new Marked(
   markedHighlight({
@@ -23,34 +24,35 @@ const marked = new Marked(
   })
 );
 
-const request = new Request();
+// const request = new Request();
 
 const ArticleDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
   const { locale } = useTranslation('article-info')
   const { theme } = useTheme()
   const [article, setArticle] = useState<ArticleType | null>(null);
   const id = React.use(params).id; // 修复获取 ID 的方式
+  // const { show, close, Loading } = useLoading();
 
   useEffect(() => {
     if (theme === 'dark') import('highlight.js/styles/github-dark.min.css');
-    else import('highlight.js/styles/github.min.css')
-  }, [theme])
+    else import('highlight.js/styles/github.min.css');
+  }, [theme]);
 
   useEffect(() => {
-    // getArticleById(id).then(res => {
-    //   setArticle(res.data)
-    // })
+    getArticleById(id).then(res => {
+      setArticle(res.data)
+    });
     // vercel environment can't access the code directory
-    request.get<ArticleType>(`/static/articles/${id}`).then(res => {
-      console.log(res)
-      setArticle({
-        author: 'DH',
-        id: '123',
-        content: res,
-        description: '',
-        title: ''
-      })
-    })
+    // request.get<ArticleType>(`/static/articles/${id}`).then(res => {
+    //   // console.log(res)
+    //   setArticle({
+    //     author: 'DH',
+    //     id: '123',
+    //     content: res,
+    //     description: '',
+    //     title: ''
+    //   })
+    // })
   }, [id])
 
   if (!article) {
@@ -62,18 +64,17 @@ const ArticleDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
       <div className="max-w-3xl mx-auto flex flex-col gap-4">
         <Card className="!p-4 md:!p-6">
           <h1 className="text-2xl md:text-3xl font-bold mb-3">{article?.title}</h1>
-          <div className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-3 flex flex-wrap gap-x-2">
+          {/* <div className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-3 flex flex-wrap gap-x-2">
             <Link href={`/${locale}/user/${article.author}`} className="hover:underline">{article.author}</Link>
             <span>|</span>
             <span>{format(article.createTime, 'YYYY-MM-dd HH:mm:ss')}</span>
-          </div>
+          </div> */}
           <div className="mt-2 flex flex-wrap gap-2">
             {article.tags?.map(tag => (
               <Tag key={tag}>{tag}</Tag>
             ))}
           </div>
         </Card>
-
         <Card className="!p-4 md:!p-6 overflow-x-auto">
           <div
             className="prose prose-sm md:prose dark:prose-invert"
@@ -85,4 +86,4 @@ const ArticleDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
   )
 }
 
-export default ArticleDetailPage
+export default ArticleDetailPage;
