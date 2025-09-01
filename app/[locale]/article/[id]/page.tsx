@@ -41,7 +41,6 @@ const ArticleDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
   useEffect(() => {
     getArticleById(id).then(res => {
       setArticle(res.data)
-      console.log(res)
     });
     // vercel environment can't access the code directory
     // request.get<ArticleType>(`/static/articles/${id}`).then(res => {

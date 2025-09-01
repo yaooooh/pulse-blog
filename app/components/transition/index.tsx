@@ -19,7 +19,7 @@ export default function Transition({ children }: { children: React.ReactNode }) 
   useEffect(() => {
     let preIndex = 0, currIndex = 0;
     setBreadcrumb(pathname.replace('/en', '/Home').split('/').slice(1));
-    console.log(breadcrumb)
+
     routes.forEach((route, index) => {
       if (route.href.startsWith(prePath)) {
         preIndex = index;
@@ -35,7 +35,7 @@ export default function Transition({ children }: { children: React.ReactNode }) 
   }, [pathname]);
   return <div className='h-full' ref={containerRef}>
     {
-      !pathname.endsWith('home') && <div className='ms-5 mt-5'>
+      !pathname.endsWith('home') && !pathname.endsWith('en') && !pathname.endsWith('zh') && <div className='ms-5 mt-5'>
         <Breadcrumb
           items={
             breadcrumb.map((item, index) => ({
