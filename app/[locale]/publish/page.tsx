@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import { FormProps, useForm } from 'antd/es/form/Form';
 import { ArticleType } from '../../../request/article.request';
-import MarkdownEditor from '../../components/md-editor/page';
+import MarkdownEditor from '../../components/md-editor';
 
 const { TextArea } = Input;
 
