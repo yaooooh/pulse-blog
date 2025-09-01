@@ -4,12 +4,12 @@ import React, { useEffect, useState } from 'react';
 import { Card, Empty, Tag } from 'antd';
 import { useTheme } from 'next-themes';
 import { Marked } from 'marked';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { markedHighlight } from "marked-highlight";
 import hljs from 'highlight.js';
 import { useTranslation } from '../../../../hooks/useTranslation';
 import { ArticleType, getArticleById } from '../../../../request/article.request';
-import { format } from '../../../../utils/date.util';
+// import { format } from '../../../../utils/date.util';
 // import Request from '../../../../request/request';
 // import useLoading from '../../../../hooks/useLoading';
 
@@ -27,7 +27,7 @@ const marked = new Marked(
 // const request = new Request();
 
 const ArticleDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
-  const { locale } = useTranslation('article-info')
+  // const { locale } = useTranslation('article-info')
   const { theme } = useTheme()
   const [article, setArticle] = useState<ArticleType | null>(null);
   const id = React.use(params).id; // 修复获取 ID 的方式

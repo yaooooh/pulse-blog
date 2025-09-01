@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Input, Button, Form, message } from 'antd'
 import { PhoneOutlined, MailOutlined, GlobalOutlined } from '@ant-design/icons'
-import { useTheme } from 'next-themes'
+// import { useTheme } from 'next-themes'
 import { useTranslation } from '../../../hooks/useTranslation'
 import Link from 'next/link'
 

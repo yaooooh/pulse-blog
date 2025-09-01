@@ -1,4 +1,6 @@
 
+"use client";
+
 import MDEditor, { MDEditorProps } from "@uiw/react-md-editor";
 
 interface MarkdownEditorProps extends Omit<MDEditorProps, 'onChange' | 'value'> {
