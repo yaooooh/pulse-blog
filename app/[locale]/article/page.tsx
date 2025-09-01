@@ -100,7 +100,7 @@ export default function Article() {
                 {
                   articleList.slice(0, 6).map(article => (
                     <>
-                      <li><a href={`article/${article.id}`} className='text-blue-600 dark:text-blue-400'>{article.title}</a></li>
+                      <li key={article.id}><a href={`article/${article.id}`} className='text-blue-600 dark:text-blue-400'>{article.title}</a></li>
                     </>
                   ))
                 }
